@@ -1,6 +1,6 @@
-import {AddTaskAC, ChangeTaskStatusAC, RemoveTaskAC, tasksReducer} from './tasks-reducer';
-import {TasksStateType} from '../App';
-import {AddTodolistAC} from "./todolists-reducer";
+import {addTaskAC, changeTaskStatusAC, removeTaskAC, tasksReducer} from './tasks-reducer';
+import {TasksStateType} from '../AppWithRedux';
+import {addTodolistAC} from "./todolists-reducer";
 let startState: TasksStateType
 beforeEach(()=>{
      startState = {
@@ -19,7 +19,7 @@ beforeEach(()=>{
 
 test('correct task should be deleted from correct array', () => {
 
-    const action = RemoveTaskAC("2", "todolistId2");
+    const action = removeTaskAC("2", "todolistId2");
 
     const endState = tasksReducer(startState, action)
 
@@ -38,7 +38,7 @@ test('correct task should be deleted from correct array', () => {
 });
 test('correct task should be added to correct array', () => {
 
-    const action = AddTaskAC("juce", "todolistId2");
+    const action = addTaskAC("juce", "todolistId2");
 
     const endState = tasksReducer(startState, action)
 
@@ -51,7 +51,7 @@ test('correct task should be added to correct array', () => {
 
 test('status of specified task should be changed', () => {
 
-    const action = ChangeTaskStatusAC("2", false, "todolistId2");
+    const action = changeTaskStatusAC("2", false, "todolistId2");
 
     const endState = tasksReducer(startState, action)
 
@@ -60,7 +60,7 @@ test('status of specified task should be changed', () => {
 });
 test('new array should be added when new todolist is added', () => {
 
-    const action = AddTodolistAC("new todolist");
+    const action = addTodolistAC("new todolist");
 
     const endState = tasksReducer(startState, action)
 
